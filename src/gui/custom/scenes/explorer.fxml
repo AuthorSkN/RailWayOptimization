@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<fx:root type="javafx.scene.control.TabPane" xmlns:fx="http://javafx.com/fxml" tabClosingPolicy="UNAVAILABLE" >
+            <tabs>
+                <Tab text="Магистрали">
+                    <content>
+                        <VBox>
+                            <children>
+                                <CheckBox mnemonicParsing="false" text="Скрыть все"/>
+                                <ScrollPane>
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" />
+                                    </content>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </ScrollPane>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Станции">
+                    <content>
+                        <VBox>
+                            <children>
+                                <CheckBox mnemonicParsing="false" text="Скрыть все" />
+                                <ScrollPane>
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" />
+                                    </content>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </ScrollPane>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+</fx:root>
