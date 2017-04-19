@@ -1,6 +1,6 @@
 package gui;
 
-import gui.custom.controllers.Explorer;
+import gui.custom.explorer.Explorer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,4 +1,4 @@
-package gui.cstm.mapview;
+package gui.custom.mapview;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

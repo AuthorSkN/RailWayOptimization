@@ -1,4 +1,4 @@
-package gui.custom.controllers;
+package gui.custom.explorer;
 
 import gui.Main;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class Explorer extends TabPane {
      * Конструктор, реализующий механизм связи с .fxml
      */
     public Explorer(){
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("custom/scenes/explorer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("custom/explorer/explorer.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
