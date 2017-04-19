@@ -17,8 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
+<?import gui.custom.explorer.Explorer?>
+<?import gui.custom.mapview.MapView?>
 
-<?import gui.custom.controllers.Explorer?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MainController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -72,6 +73,8 @@
              <Explorer GridPane.rowSpan="2"/>
          </children>
       </GridPane>
-      <WebView fx:id="webView" prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+       <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+           <MapView fx:id="mapView" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+       </AnchorPane>
    </children>
 </GridPane>

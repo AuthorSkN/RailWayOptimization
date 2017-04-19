@@ -15,12 +15,9 @@ public class Main extends Application {
 
         primaryStage.setTitle("Окно авторизации");
 
-        Explorer exp = new Explorer();
-
 
         Parent root = FXMLLoader.load(getClass().getResource("scenes/authorization.fxml"));
-        //primaryStage.setScene(new Scene(root, 320,160));
-        primaryStage.setScene(new Scene(exp));
+        primaryStage.setScene(new Scene(root, 320,160));
         primaryStage.show();
 
     }

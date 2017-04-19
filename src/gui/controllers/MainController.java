@@ -1,6 +1,8 @@
 package gui.controllers;
 
 import gui.Main;
+import gui.custom.mapview.MapView;
+import gui.custom.mapview.graphics.MapLine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import model.Point;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -47,21 +50,26 @@ public class MainController {
      * <p>Компонент веб-представления для отображения карты</p>
      */
     @FXML
-    WebView webView;
+    MapView mapView;
 
     /**
      * <p>Обработчик события нажатия кнопки показа</p>
      */
     public void onClickShow(ActionEvent actionEvent) {
-        WebEngine engine = webView.getEngine();
-        engine.loadContent("poka nichego net(9");
+        if(mapView.getListLine().size() > 0){
+            mapView.showLine(0);
+        }else{
+            MapLine l = new MapLine(new Point(56.1061136, 40.37346183),
+                    new Point(56.226410,40.61104117), "#FF00FF", 4);
+            mapView.addLine(l);
+        }
     }
 
     /**
      * <p>Обработчик события нажатия кнопки скрытия</p>
      */
     public void onClickHide(ActionEvent actionEvent) {
-        WebEngine engine = webView.getEngine();
-        engine.loadContent("");
+        if(mapView.getListLine().size() > 0)
+            mapView.hideLine(0);
     }
 }
