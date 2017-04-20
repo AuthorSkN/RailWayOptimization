@@ -1,13 +1,13 @@
 package model;
 
-public class Station {
+public class Production {
     private double longitude;
     private double latitude;
     private double weight;
-    private int station_id;
+    private int production_id;
 
-    public Station(int staton_id, double longitude, double latitude, double weight){
-        this.station_id=staton_id;
+    public Production(int production_id, double longitude, double latitude, double weight){
+        this.production_id =production_id;
         this.longitude=longitude;
         this.latitude=latitude;
         this.weight=weight;
