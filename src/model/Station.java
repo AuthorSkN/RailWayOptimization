@@ -1,6 +1,9 @@
 package model;
 
-public class Production {
+/**
+ * Created by alexUnder on 25.04.2017.
+ */
+public class Station {
     private double longitude;
     private double latitude;
     private double weight;
@@ -27,7 +30,7 @@ public class Production {
         return name;
     }
 
-    public Production(int production_id, String name, double longitude, double latitude, double weight){
+    public Station(int production_id, String name, double longitude, double latitude, double weight){
         this.production_id =production_id;
         this.longitude=longitude;
         this.latitude=latitude;

@@ -56,6 +56,10 @@ public class XlsLoader {
      * Номер столбца широт в документе
      */
     private int lattColumnNum = -1;
+    /**
+     * Номер столбца имен в документе
+     */
+    private int nameColumnNum = -1;
 
     /**
      * Конструктор для создания загрузчика данных из электронных таблиц
@@ -98,6 +102,8 @@ public class XlsLoader {
                 case "id":
                     idColumnNum=i;
                     break;
+                case "name":
+                    nameColumnNum=i;
                 default:
                     throw new IllegalArgumentException("Unknown token: \"" + token + "\" from string \"" + cellString + "\" from cell " + currentCell.toString());
             }
@@ -117,16 +123,43 @@ public class XlsLoader {
         //lattitude:
         currentCell = currentRow.getCell(lattColumnNum);
         double lattitude = currentCell.getNumericCellValue();
+        //name:
+        String name="";
+        if(nameColumnNum!=-1){
+            name = currentRow.getCell(nameColumnNum).getStringCellValue();
+        }
         //result:
-        Production prod = new Production(id,longitude,lattitude,weight);
+        Production prod = new Production(id,name,longitude,lattitude,weight);
         return prod;
+    }
+    private Station readStation(){
+        //id:
+        currentCell = currentRow.getCell(idColumnNum);
+        int id = (int)currentCell.getNumericCellValue();
+        //weight:
+        currentCell = currentRow.getCell(weightColumnNum);
+        double weight = currentCell.getNumericCellValue();
+        //longitude:
+        currentCell = currentRow.getCell(longColumnNum);
+        double longitude = currentCell.getNumericCellValue();
+        //lattitude:
+        currentCell = currentRow.getCell(lattColumnNum);
+        double lattitude = currentCell.getNumericCellValue();
+        //name:
+        String name="";
+        if(nameColumnNum!=-1){
+            name = currentRow.getCell(nameColumnNum).getStringCellValue();
+        }
+        //result:
+        Station stat = new Station(id,name,longitude,lattitude,weight);
+        return stat;
     }
 
     /**
      * Метод получения списка всех производств из файла
      * @return
      */
-    public LinkedList<Production> readAll(){
+    public LinkedList<Production> readProductions(){
         LinkedList<Production> productions = new LinkedList<>();
         readHeader();
         int i =1;
@@ -139,5 +172,24 @@ public class XlsLoader {
             currentCell = currentRow.getCell(0);
         }
         return productions;
+    }
+
+    /**
+     * Метод получения списка всех станций из файла
+     * @return
+     */
+    public LinkedList<Station> readStations(){
+        LinkedList<Station> stations = new LinkedList<>();
+        readHeader();
+        int i =1;
+        currentRow = dataSheet.getRow(i);
+        currentCell = currentRow.getCell(0);
+        while ((currentCell != null)/* && (currentCell.getCellType() != Cell.CELL_TYPE_BLANK)*/) {
+            Station nextStat = readStation();
+            stations.add(nextStat);
+            currentRow = dataSheet.getRow(++i);
+            currentCell = currentRow.getCell(0);
+        }
+        return stations;
     }
 }
