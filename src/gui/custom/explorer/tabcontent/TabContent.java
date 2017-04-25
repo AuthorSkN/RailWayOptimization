@@ -9,8 +9,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import model.Production;
-import model.XlsLoader;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+//import model.XlsLoader;
+//import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,17 +47,17 @@ public class TabContent extends VBox {
      */
     public void loadFromXlsx(ActionEvent actionEvent){
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("excell files", XlsLoader.FILE_EXTENSION_2,XlsLoader.FILE_EXTENSION_1));
+        //fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("excell files", XlsLoader.FILE_EXTENSION_2,XlsLoader.FILE_EXTENSION_1));
         Window mainWindow = this.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(mainWindow);
         if(selectedFile!=null){
-            try {
-                XlsLoader xlsLoader = new XlsLoader(selectedFile);
-                List<Production> prods = xlsLoader.readAll();
+            //try {
+                //XlsLoader xlsLoader = new XlsLoader(selectedFile);
+                //List<Production> prods = xlsLoader.readAll();
 
-            } catch (IOException | InvalidFormatException e) {
-                e.printStackTrace();
-            }
+            //} catch (IOException | InvalidFormatException e) {
+              //  e.printStackTrace();
+            //}
         }
     }
 

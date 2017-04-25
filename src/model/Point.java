@@ -2,16 +2,13 @@ package model;
 
 /**
  * <p>Класс точки на карте</p>
+ * @author Складнев Н.С.
  */
 public class Point {
 
-    private double latitude = 0.0;  //широта
-    private double longitude = 0.0;  //долгота
+    protected double latitude = 0.0;  //широта
+    protected double longitude = 0.0;  //долгота
 
-    /**
-     * <p>Конструктор(по-умолчанию)</p>
-     */
-    public Point(){}
 
     /**
      * <p>Конструктор</p>
