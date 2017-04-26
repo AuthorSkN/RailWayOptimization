@@ -11,10 +11,6 @@ import java.util.List;
  */
 public class MapPolyline extends MapLine{
 
-    /**
-     * <p>Конструктор(по-умолчанию)</p>
-     */
-    public MapPolyline(){}
 
     /**
      * <p>Конструктор</p>

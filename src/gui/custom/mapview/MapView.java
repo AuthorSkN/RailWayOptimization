@@ -1,6 +1,7 @@
 package gui.custom.mapview;
 
 import gui.custom.mapview.graphics.MapLine;
+import gui.custom.mapview.graphics.MapPoint;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -26,6 +27,7 @@ public class MapView extends BorderPane {
     private WebEngine webEngine;
 
     private List<MapLine> listLine = new ArrayList<>();
+    private List<MapPoint> listPoint = new ArrayList<>();
 
 
     /**
@@ -72,6 +74,11 @@ public class MapView extends BorderPane {
         win.call("addLine", line);
     }
 
+    public void addPoint(MapPoint point){
+        listPoint.add(point);
+        JSObject win = (JSObject)webEngine.executeScript("window");
+        win.call("addPoint", point);
+    }
 
     public void showLine(int id){
         if(id < listLine.size()) {
@@ -86,6 +93,12 @@ public class MapView extends BorderPane {
             win.call("hideLine", id);
         }
     }
+
+    public void clustering(){
+        JSObject win = (JSObject)webEngine.executeScript("window");
+        win.call("clustering");
+    }
+
 }
 
 

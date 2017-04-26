@@ -1,5 +1,4 @@
 package model;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -10,14 +9,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
-
 /**
  * Класс загрузчика сущностей из эксель-документов
- */
+*/
 public class XlsLoader {
     /**
      * Допутимое расширение для загрузчика
-     */
+      */
     public static String FILE_EXTENSION_1 = ".xls";
     /**
      * Допутимое расширение для загрузчика
@@ -82,7 +80,7 @@ public class XlsLoader {
         currentCell = currentRow.getCell(0);
         //int nameCol = -1;
         int i = 0; //текущий номер ячейки в строке заголовков
-        while ((currentCell != null)/* && (currentCell.getCellType() != Cell.CELL_TYPE_BLANK)*/) {
+        while ((currentCell != null))) {
             String cellString = currentCell.getStringCellValue().toLowerCase().trim();
             String token = cellString;
             switch (token) {
@@ -165,7 +163,7 @@ public class XlsLoader {
         int i =1;
         currentRow = dataSheet.getRow(i);
         currentCell = currentRow.getCell(0);
-        while ((currentCell != null)/* && (currentCell.getCellType() != Cell.CELL_TYPE_BLANK)*/) {
+        while (currentCell != null) {
             Production nextProd = readProd();
             productions.add(nextProd);
             currentRow = dataSheet.getRow(++i);
@@ -173,6 +171,7 @@ public class XlsLoader {
         }
         return productions;
     }
+}
 
     /**
      * Метод получения списка всех станций из файла

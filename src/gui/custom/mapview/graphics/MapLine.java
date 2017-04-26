@@ -15,12 +15,10 @@ public class MapLine {
      */
     protected List<Point> points;
     protected String color = "#000000";
-    protected int weight = 1;
+    protected int weight = 2;
     protected boolean visible = true;
 
-    /**
-     * <p>Конструктор(по-умолчанию)</p>
-     */
+
     public MapLine(){}
 
     /**
