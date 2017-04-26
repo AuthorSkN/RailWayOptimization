@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -32,10 +33,14 @@ public class MainController {
      */
     public static void sceneShow(boolean asAdmin, Stage showOn) {
         try{
-        Parent root = FXMLLoader.load(Main.class.getResource("scenes\\main.fxml"));
-        showOn.setTitle("Rail-BRO-ad");
-        showOn.setScene(new Scene(root, 1000, 700));
-        showOn.show();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("scenes\\main.fxml"));
+            Parent root = fxmlLoader.load();
+            showOn.setTitle("Rail-BRO-ad");
+            Scene newScene = new Scene(root, 1000, 700);
+            newScene.setUserData(fxmlLoader);
+            showOn.setScene(newScene);
+            showOn.show();
+
         } catch(IOException exc){
             JOptionPane.showMessageDialog(null,"IO exception occured while showing scene:\n" + exc.getMessage());
         }
@@ -85,6 +90,10 @@ public class MainController {
         res.add(new Point(54.6817597554209,41.30639400633395));
         return res;
     }
+  
+    public MapView getMapView(){
+        return mapView;
+    }
 
     /**
      * <p>Обработчик события нажатия кнопки показа</p>
@@ -113,5 +122,13 @@ public class MainController {
     public void onClickHide(ActionEvent actionEvent) {
         if(mapView.getListLine().size() > 0)
             mapView.hideLine(0);
+    }
+
+    /**
+     * Метод получения сцены текущего компонента (да,завязан на мапВью(да,это плохо))
+     * @return
+     */
+    private Scene getScene(){
+        return mapView.getScene();
     }
 }
