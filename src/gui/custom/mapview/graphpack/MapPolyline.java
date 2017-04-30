@@ -1,4 +1,4 @@
-package gui.custom.mapview.graphics;
+package gui.custom.mapview.graphpack;
 
 
 import model.Point;
@@ -15,8 +15,10 @@ public class MapPolyline extends MapLine{
     /**
      * <p>Конструктор</p>
      * @param points список точек линии
+     * @param id идентификатор
      */
-    public MapPolyline(List<Point> points){
+    public MapPolyline(int id, List<Point> points){
+        super(id);
         this.points = points;
     }
 
@@ -25,23 +27,26 @@ public class MapPolyline extends MapLine{
      * @param points список точек линии
      * @param col цвет в строковом формате
      * @param w вес(относительная ширина) линии
+     * @param id идентификатор
      */
-    public MapPolyline(List<Point> points, String col, int w){
-        this(points);
+    public MapPolyline(int id, List<Point> points, String col, int w){
+        this(id, points);
         color = col;
         weight = w;
     }
 
     /**
      * <p>Конструктор</p>
+     * @param id идентификатор
+     * @param title название
      * @param points список точек линии
      * @param col цвет в строковом формате
      * @param w вес(относительная ширина) линии
-     * @param vis видимость линии
      */
-    public MapPolyline(List<Point> points, String col, int w, boolean vis){
-        this(points, col, w);
-        visible = vis;
+    public MapPolyline(int id, String title, List<Point> points, String col, int w){
+        this(id,points,col,w);
+        inf.setTitle(title);
     }
+
 
 }
