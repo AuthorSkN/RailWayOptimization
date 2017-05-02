@@ -2,23 +2,12 @@
 
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.geometry.Insets?>
-<?import gui.custom.explorer.tabcontent.TabContent?>
-<?import javafx.scene.control.Label?>
+<?import gui.custom.explorer.tabcontent.TabContentProduction?>
 <fx:root type="javafx.scene.control.TabPane" xmlns:fx="http://javafx.com/fxml" tabClosingPolicy="UNAVAILABLE" >
             <tabs>
                 <Tab text="Производства">
                     <content>
-                        <TabContent destination="Production"></TabContent>
-                    </content>
-                </Tab>
-                <Tab text="Станции">
-                    <content>
-                        <TabContent destination="Station"></TabContent>
+                        <TabContentProduction></TabContentProduction>
                     </content>
                 </Tab>
             </tabs>

@@ -80,7 +80,7 @@ public class XlsLoader {
         currentCell = currentRow.getCell(0);
         //int nameCol = -1;
         int i = 0; //текущий номер ячейки в строке заголовков
-        while ((currentCell != null))) {
+        while (currentCell != null) {
             String cellString = currentCell.getStringCellValue().toLowerCase().trim();
             String token = cellString;
             switch (token) {
@@ -171,7 +171,6 @@ public class XlsLoader {
         }
         return productions;
     }
-}
 
     /**
      * Метод получения списка всех станций из файла
@@ -183,7 +182,7 @@ public class XlsLoader {
         int i =1;
         currentRow = dataSheet.getRow(i);
         currentCell = currentRow.getCell(0);
-        while ((currentCell != null)/* && (currentCell.getCellType() != Cell.CELL_TYPE_BLANK)*/) {
+        while (currentCell != null) {
             Station nextStat = readStation();
             stations.add(nextStat);
             currentRow = dataSheet.getRow(++i);
