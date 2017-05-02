@@ -1,4 +1,4 @@
-package gui.custom.mapview.graphics;
+package gui.custom.mapview.graphpack;
 
 /**
  * <p>Класс настройки стиля для точки на карте.</p>
@@ -14,7 +14,6 @@ public class MapPointStyle {
     private String colorContour = "#000";
     private String colorFill = "FFF";
     private int shape = CIRCLE;
-    private double opacity = 1;
     private int weightContour = 2;
 
     /**
@@ -42,15 +41,6 @@ public class MapPointStyle {
         this.colorFill = colorFill;
     }
 
-    /**
-    * <p>Конструктор</p>
-    * @param shape фигура
-    * @param colorCountur цвет контура
-    * @param opacity прозрачность, от 0 до 1
-    */
-    public MapPointStyle(int shape, String colorCountur, String colorFill, double opacity){
-        this(shape, colorCountur, colorFill);
-    }
 
     /**
      * <p>Возвращает цвет контура</p>
@@ -98,22 +88,6 @@ public class MapPointStyle {
      */
     public void setShape(int shape) {
         this.shape = shape;
-    }
-
-    /**
-     * <p>Возвращает прозрачность</p>
-     * @return прозрачность, от 0 до 1
-     */
-    public double getOpacity() {
-        return opacity;
-    }
-
-    /**
-     * <p>Изменяет прозрачность</p>
-     * @param opacity прозрачность, от 0 до 1
-     */
-    public void setOpacity(double opacity) {
-        this.opacity = opacity;
     }
 
     /**

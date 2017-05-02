@@ -1,7 +1,6 @@
-package gui.custom.mapview.graphics;
+package gui.custom.mapview.graphpack;
 
 import model.Point;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,24 +8,30 @@ import java.util.List;
  * <p>Класс линии карты, инкапсулирующий в себе координаты и характеристики линии на карте</p>
  * @author Складнев Н.С.
  */
-public class MapLine {
+public class MapLine extends MapGraphObj{
     /*
         Данный класс достаточно обобщен, для применения его основы под MapPolyline
      */
     protected List<Point> points;
     protected String color = "#000000";
     protected int weight = 2;
-    protected boolean visible = true;
 
-
-    public MapLine(){}
+    /**
+     * <p>Конструктор</p>
+     * @param id идентификатор
+     */
+    public MapLine(int id){
+        inf = new MapObjInf(id);
+    }
 
     /**
      * <p>Конструктор</p>
      * @param pt1 первая точка
      * @param pt2 вторая точка
+     * @param id идентификатор
      */
-    public MapLine(Point pt1, Point pt2){
+    public MapLine(int id, Point pt1, Point pt2){
+        this(id);
         points = new ArrayList<>(2);
         points.add(0,pt1);
         points.add(1, pt2);
@@ -38,25 +43,14 @@ public class MapLine {
      * @param pt2 вторая точка
      * @param col цвет линии
      * @param w вес(относительная ширина линии)
+     * @param id идентификатор
      */
-    public MapLine(Point pt1, Point pt2, String col, int w){
-        this(pt1, pt2);
+    public MapLine(int id, Point pt1, Point pt2, String col, int w){
+        this(id, pt1, pt2);
         color = col;
         weight = w;
     }
 
-    /**
-     * <p>Конструктор</p>
-     * @param pt1 первая точка
-     * @param pt2 вторая точка
-     * @param col цвет линии
-     * @param w вес(относительная ширина линии)
-     * @param vis видимость линии(true - линия отображается)
-     */
-    public MapLine(Point pt1, Point pt2, String col, int w, boolean vis){
-        this(pt1, pt2, col, w);
-        visible = vis;
-    }
 
     /**
      * <p>Возвращает точки линии</p>
@@ -66,19 +60,9 @@ public class MapLine {
         return points;
     }
 
-    /**
-     * <p>Изменяет крайние точки линии</p>
-     * @param ptF первая точка
-     * @param ptL последняя точка
-     */
-    public void setEndPoints(Point ptF, Point ptL){
-        points.set(0, ptF);
-        points.set(points.size()-1, ptL);
-    }
-
 
     /**
-     * <p>Изменяет значение цвета линии</p>
+     * <p>Задает значение цвета линии</p>
      * @param color цвет в формате строки
      */
     public void setColor(String color) {
@@ -86,7 +70,7 @@ public class MapLine {
     }
 
     /**
-     * Изменяет значение веса(относительной ширины) линии
+     * Задает значение веса(относительной ширины) линии
      * @param weight коэффициент веса
      */
     public void setWeight(int weight) {
@@ -110,18 +94,38 @@ public class MapLine {
     }
 
     /**
-     * <p>Возвращает значение true если линия отображется сейчас на карте.</p>
-     * @return true если отображается(false иначе)
+     * Возвращает название объекта
+     * @return название объекта
      */
-    public boolean isVisible() {
-        return visible;
+    @Override
+    public String getTitle() {
+        return inf.getTitle();
     }
 
     /**
-     * <p>Изменяет значение видимости линии на карте</p>
-     * @param visible true, если линия должна отображаться
+     * Задает название объекта
+     * @param title название объекта
      */
-    public void setVisible(boolean visible) {
-        this.visible = visible;
+    @Override
+    public void setTitle(String title) {
+        inf.setTitle(title);
+    }
+
+    /**
+     * Возвращает информацию об объекте(id и название)
+     * @return информация об объекте
+     */
+    @Override
+    public MapObjInf getObjInf() {
+        return inf;
+    }
+
+    /**
+     * Возвращает идентификатор линии
+     * @return идентификатор
+     */
+    @Override
+    public int getID() {
+        return inf.getID();
     }
 }

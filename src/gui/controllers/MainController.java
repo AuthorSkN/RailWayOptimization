@@ -2,26 +2,22 @@ package gui.controllers;
 
 import gui.Main;
 import gui.custom.mapview.MapView;
-import gui.custom.mapview.graphics.MapLine;
-import gui.custom.mapview.graphics.MapPoint;
-import gui.custom.mapview.graphics.MapPointStyle;
-import gui.custom.mapview.graphics.MapPolyline;
+import gui.custom.mapview.graphpack.MapObjInf;
+import gui.custom.mapview.graphpack.MapPoint;
+import gui.custom.mapview.graphpack.MapPointStyle;
+import gui.custom.mapview.graphpack.MapPolyline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import model.Point;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * <p>Класс контроллера основного окна</p>
@@ -33,14 +29,10 @@ public class MainController {
      */
     public static void sceneShow(boolean asAdmin, Stage showOn) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("scenes\\main.fxml"));
-            Parent root = fxmlLoader.load();
-            showOn.setTitle("Rail-BRO-ad");
-            Scene newScene = new Scene(root, 1000, 700);
-            newScene.setUserData(fxmlLoader);
-            showOn.setScene(newScene);
-            showOn.show();
-
+        Parent root = FXMLLoader.load(Main.class.getResource("scenes\\main.fxml"));
+        showOn.setTitle("Rail-BRO-ad");
+        showOn.setScene(new Scene(root, 1000, 700));
+        showOn.show();
         } catch(IOException exc){
             JOptionPane.showMessageDialog(null,"IO exception occured while showing scene:\n" + exc.getMessage());
         }
@@ -78,8 +70,11 @@ public class MainController {
         res.add(new Point(54.57337237817825,39.834525098782095));
         res.add(new Point(54.532823823124296,39.8733891304875));
         res.add(new Point(54.501664863790666,39.99423873986251));
-        ///
-        res.add(new Point(54.296540904671126,40.22769821251876));
+        return res;
+    }
+
+    private List<Point> createPoints2(){
+        List<Point> res = new ArrayList<>();
         res.add(new Point(54.25957342242049,40.408972626581246));
         res.add(new Point(54.29332766356659,40.656165009393746));
         res.add(new Point(54.32785680702392,40.94180954064374));
@@ -90,45 +85,27 @@ public class MainController {
         res.add(new Point(54.6817597554209,41.30639400633395));
         return res;
     }
-  
-    public MapView getMapView(){
-        return mapView;
-    }
 
     /**
      * <p>Обработчик события нажатия кнопки показа</p>
      */
     public void onClickShow(ActionEvent actionEvent) {
-        if(mapView.getListLine().size() > 0){
-            mapView.showLine(0);
+        if (!mapView.isLineExists(2)) {
+            MapPolyline l = new MapPolyline(2, createPoints(), "#7b68ee", 3);
+            mapView.addLine(l, true);
+            MapPolyline l2 = new MapPolyline(5, createPoints2(), "#54A323", 2);
+            mapView.addLine(l2, true);
+            mapView.createLineGroup(new MapObjInf(1), new int[]{2,5});
         }else{
-            MapPolyline l = new MapPolyline(createPoints(), "#7b68ee", 3);
-            mapView.addLine(l);
-            for(int i = 0; i < 900; i++){
-                double rnd1 = Math.random();
-                double rnd2 = Math.random();
-                double lat = rnd1*9 + 52.0;
-                double lng = rnd2*14 + 43.0;
-                Point p = new Point(lat, lng);
-                mapView.addPoint(new MapPoint(p, "Станция", new MapPointStyle(0), 2));
-            }
-            mapView.clustering();
+            mapView.showLineGroup(1);
         }
+
     }
 
     /**
      * <p>Обработчик события нажатия кнопки скрытия</p>
      */
     public void onClickHide(ActionEvent actionEvent) {
-        if(mapView.getListLine().size() > 0)
-            mapView.hideLine(0);
-    }
-
-    /**
-     * Метод получения сцены текущего компонента (да,завязан на мапВью(да,это плохо))
-     * @return
-     */
-    private Scene getScene(){
-        return mapView.getScene();
+        mapView.clearLines();
     }
 }
