@@ -1,4 +1,5 @@
 package model;
+/*
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,59 +14,60 @@ import java.util.LinkedList;
  * Класс загрузчика сущностей из эксель-документов
 */
 public class XlsLoader {
+
     /**
      * Допутимое расширение для загрузчика
       */
-    public static String FILE_EXTENSION_1 = ".xls";
+    //public static String FILE_EXTENSION_1 = ".xls";
     /**
      * Допутимое расширение для загрузчика
      */
-    public static String FILE_EXTENSION_2 = ".xlsx";
+    //public static String FILE_EXTENSION_2 = ".xlsx";
 
     /**
      * Документ с данными
      */
-    private Workbook book;
+    //private Workbook book;
     /**
      * Таблица с данными в документе
      */
-    private Sheet dataSheet;
+    //private Sheet dataSheet;
     /**
      * Указатель на текущую обрабатваемую строку таблицы
      */
-    private Row currentRow;
+    //private Row currentRow;
     /**
      * Указатель на текущую обрабатваемую клетку таблицы
      */
-    private Cell currentCell;
+   // private Cell currentCell;
     /**
      * Номер столбца весов в документе
      */
-    private int weightColumnNum = -1;
+    //private int weightColumnNum = -1;
     /**
      * Номер столбца айди в документе
      */
-    private int idColumnNum = -1;
+    //private int idColumnNum = -1;
     /**
      * Номер столбца долгот в документе
      */
-    private int longColumnNum = -1;
+    //private int longColumnNum = -1;
     /**
      * Номер столбца широт в документе
      */
-    private int lattColumnNum = -1;
+    //private int lattColumnNum = -1;
     /**
      * Номер столбца имен в документе
      */
-    private int nameColumnNum = -1;
+    //private int nameColumnNum = -1;
 
     /**
      * Конструктор для создания загрузчика данных из электронных таблиц
-     * @param xlsFile
-     * @throws IOException
-     * @throws InvalidFormatException
-     */
-    public XlsLoader(File xlsFile) throws IOException, InvalidFormatException {
+     * //@param xlsFile
+     * //@throws IOException
+     * //@throws InvalidFormatException
+     *
+  public XlsLoader(File xlsFile) throws IOException, InvalidFormatException {
         if(xlsFile.getName().endsWith(FILE_EXTENSION_1)){
             book = new XSSFWorkbook(xlsFile);
         } else if(xlsFile.getName().endsWith(FILE_EXTENSION_2)){
@@ -156,7 +158,7 @@ public class XlsLoader {
     /**
      * Метод получения списка всех производств из файла
      * @return
-     */
+     *
     public LinkedList<Production> readProductions(){
         LinkedList<Production> productions = new LinkedList<>();
         readHeader();
@@ -176,19 +178,19 @@ public class XlsLoader {
     /**
      * Метод получения списка всех станций из файла
      * @return
-     */
+     *
     public LinkedList<Station> readStations(){
         LinkedList<Station> stations = new LinkedList<>();
         readHeader();
         int i =1;
         currentRow = dataSheet.getRow(i);
         currentCell = currentRow.getCell(0);
-        while ((currentCell != null)/* && (currentCell.getCellType() != Cell.CELL_TYPE_BLANK)*/) {
+        while ((currentCell != null)/* && (currentCell.getCellType() != Cell.CELL_TYPE_BLANK)) {
             Station nextStat = readStation();
             stations.add(nextStat);
             currentRow = dataSheet.getRow(++i);
             currentCell = currentRow.getCell(0);
         }
         return stations;
-    }
+    }*/
 }

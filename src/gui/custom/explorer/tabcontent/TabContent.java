@@ -2,7 +2,7 @@ package gui.custom.explorer.tabcontent;
 
 import gui.Main;
 import gui.controllers.MainController;
-import gui.custom.mapview.graphics.MapLine;
+//import gui.custom.mapview.graphics.MapLine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
@@ -18,7 +18,7 @@ import model.Point;
 import model.Production;
 import model.Station;
 import model.XlsLoader;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+//import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import sun.security.krb5.internal.crypto.Des;
 import java.io.File;
 import java.io.IOException;
@@ -78,6 +78,7 @@ public class TabContent extends VBox {
      * @param actionEvent
      */
     public void loadFromXlsx(ActionEvent actionEvent) {
+        /*
         MainController maincontroller = ((FXMLLoader) this.getScene().getUserData()).getController();
         ////
         FileChooser fileChooser = new FileChooser();
@@ -118,10 +119,10 @@ public class TabContent extends VBox {
 
                 }
                 /*ObservableList objectsObs = FXCollections.observableList(objects);
-                listView.setItems(objectsObs);*/
+                listView.setItems(objectsObs);*//*
             } catch (IOException | InvalidFormatException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 }
