@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import model.Point;
 import netscape.javascript.JSObject;
 
 import java.io.IOException;
@@ -405,6 +406,15 @@ public class MapView extends BorderPane {
         win.call("clearLines");
         lineGroups.clear();
         lines.clear();
+    }
+
+    /**
+     * <p>Обеспечивает центрирование карты по точке</p>
+     * @param point точка центрирования
+     */
+    public void centering(Point point){
+        JSObject win = (JSObject) webEngine.executeScript("window");
+        win.call("centering", point);
     }
 
 }

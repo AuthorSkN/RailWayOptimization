@@ -126,4 +126,8 @@ function clearLines(){
     lineList = [];
 }
 
+function centering(point){
+    map.panTo(new google.maps.LatLng(point.getLatitude(), point.getLongitude()));
+}
+
 

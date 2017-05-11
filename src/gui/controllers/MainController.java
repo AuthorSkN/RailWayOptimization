@@ -91,13 +91,10 @@ public class MainController {
      */
     public void onClickShow(ActionEvent actionEvent) {
         if (!mapView.isLineExists(2)) {
-            MapPolyline l = new MapPolyline(2, createPoints(), "#7b68ee", 3);
-            mapView.addLine(l, true);
-            MapPolyline l2 = new MapPolyline(5, createPoints2(), "#54A323", 2);
-            mapView.addLine(l2, true);
-            mapView.createLineGroup(new MapObjInf(1), new int[]{2,5});
+            MapPoint point = new MapPoint(2, 54.97424490393586,39.14343902930939);
+            mapView.addPoint(point, true);
         }else{
-            mapView.showLineGroup(1);
+
         }
 
     }
@@ -106,6 +103,6 @@ public class MainController {
      * <p>Обработчик события нажатия кнопки скрытия</p>
      */
     public void onClickHide(ActionEvent actionEvent) {
-        mapView.clearLines();
+        mapView.centering(new Point(54.97424490393586,39.14343902930939));
     }
 }
